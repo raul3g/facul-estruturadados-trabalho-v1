@@ -1,10 +1,10 @@
-<center>
+<h1 align="center" >
   <img src="https://portal.fbuni.edu.br/images/logo-login.png" />
-</center>
+</h1>
 
 <h1 align="center" >Trabalho da V1 de Estrutura de Dados II</h1>
 
-## Objetivo: Manutenção em um cadastro de `nomes` de pessoas.
+## Objetivo: Manutenção em um cadastro de _nomes_ de pessoas.
 
 ## Description:
 
@@ -31,3 +31,13 @@
 7. Listar e remover da memória todos os nomes que _são menores_, em ordem alfabética, que um nome fornecido.
 
 8. Salvar o conteúdo da memória em um `arquivo texto`. Para facilitar a implementação, armazene todas os nomes em letras minúsculas, e considere as entradas fornecidas nas operações como sendo minúsculas.
+
+## Estrutura da Árvore:
+
+- `Arvore * criar():` Inicia a árvore.
+- `void destruir(Arvore * arv):` Limpa a árvore da memória.
+- `void imprimir(Arvore * arv):` Imprime a árvore em pré-ordem.
+- `int altura(Arvore * arv):` Calcula a _altura_ da árvore.
+- `int buscar(Arvore * arv, char * v):` Retorna se existe um dado vetor do tipo char em uma árvore.
+- `void inserir(Arvore * arv, char *v ):` Insere um vetor do tipo char, pelo método de pesquisa.
+- `void remover(Arvore * arv, char * v):` Remove um item da árvore, pelo método da pesquisa.

@@ -36,8 +36,10 @@
 
 - `Arvore * criar():` Inicia a árvore.
 - `void destruir(Arvore * arv):` Limpa a árvore da memória.
-- `void imprimir(Arvore * arv):` Imprime a árvore em pré-ordem.
+- `void imprimir(Arvore * arv):` Imprime a árvore em in-ordem.
 - `int altura(Arvore * arv):` Calcula a _altura_ da árvore.
 - `int buscar(Arvore * arv, char * v):` Retorna se existe um dado vetor do tipo char em uma árvore.
 - `void inserir(Arvore * arv, char *v ):` Insere um vetor do tipo char, pelo método de pesquisa.
 - `void remover(Arvore * arv, char * v):` Remove um item da árvore, pelo método da pesquisa.
+- `void handleShowAndRemoveToMaiorBy( Arvore * arv, char * nome ):` Imprime o remote todos os nomes maiores que um valor.
+- `void handleShowAndRemoveToMenorBy( Arvore * arv, char * nome ):` Imprime o remote todos os nomes menores que um valor.

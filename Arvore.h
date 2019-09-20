@@ -10,3 +10,7 @@ int buscar(Arvore * arv, char * v);
 void inserir(Arvore * arv, char *v );
 void remover(Arvore * arv, char * v);
 
+
+void handleShowAndRemoveToMaiorBy( Arvore * arv, char * nome );
+void handleShowAndRemoveToMenorBy( Arvore * arv, char * nome );
+

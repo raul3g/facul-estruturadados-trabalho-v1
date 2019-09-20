@@ -33,6 +33,15 @@ void toLowercase(char * nome){
 	}
 }
 
+void getNome( char * nome ){
+	system("cls");
+	printf("Digite o nome com no maximo 30 caracteres?\n obs: o nome sera convertido para minusculo.\n=> ");
+	fflush(stdin);
+	gets(nome);
+	toLowercase(nome);
+
+}
+
 void startGamer(FILE *f, Arvore * a){
 
 }
@@ -61,48 +70,36 @@ int main(int argc, char *argv[]) {
 				break;
 			}
 			case 3:{
+				char nome[30];
+				getNome(nome);
+				printf("-- Listando os nomes que contem %s... --\n", nome);
+				handleContainsBy(a, nome);
 				break;
 			}
 			case 4:{
-				system("cls");
 				char nome[30];
-				printf("Digite o nome com no maximo 30 caracteres?\n obs: o nome sera convertido para minusculo.\n=> ");
-				fflush(stdin);
-				gets(nome);
-				toLowercase(nome);
+				getNome(nome);
 				printf("-- Inserindo o nome... --\n");
 				inserir(a, nome);
 				break;
 			}
 			case 5:{
-				system("cls");
 				char nome[30];
-				printf("Digite o nome com no maximo 30 caracteres?\n obs: o nome sera convertido para minusculo.\n=> ");
-				fflush(stdin);
-				gets(nome);
-				toLowercase(nome);
+				getNome(nome);
 				printf("-- Removendo o nome... --\n");
 				remover(a, nome);
 				break;
 			}
 			case 6:{
-				system("cls");
 				char nome[30];
-				printf("Digite o nome com no maximo 30 caracteres?\n obs: o nome sera convertido para minusculo.\n=> ");
-				fflush(stdin);
-				gets(nome);
-				toLowercase(nome);
+				getNome(nome);
 				handleShowAndRemoveToMaiorBy(a, nome);
 				break;
 			}
 			
 			case 7:{
-				system("cls");
 				char nome[30];
-				printf("Digite o nome com no maximo 30 caracteres?\n obs: o nome sera convertido para minusculo.\n=> ");
-				fflush(stdin);
-				gets(nome);
-				toLowercase(nome);
+				getNome(nome);
 				handleShowAndRemoveToMenorBy(a, nome);
 				break;
 			}

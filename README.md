@@ -43,3 +43,4 @@
 - `void remover(Arvore * arv, char * v):` Remove um item da árvore, pelo método da pesquisa.
 - `void handleShowAndRemoveToMaiorBy( Arvore * arv, char * nome ):` Imprime o remote todos os nomes maiores que um valor.
 - `void handleShowAndRemoveToMenorBy( Arvore * arv, char * nome ):` Imprime o remote todos os nomes menores que um valor.
+- `void handleContainsBy(Arvore * arv, char * nome):` Imprime todos os nomes que comtém(_substring_) um dado valor.

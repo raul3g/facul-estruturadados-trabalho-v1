@@ -30,7 +30,6 @@ void desalocar_nos_rec(No * raiz) {
 	if (raiz != NULL) {
 		desalocar_nos_rec(raiz->esq);
 		desalocar_nos_rec(raiz->dir);
-    free(raiz->info);
 		free(raiz);
 	}
 }
@@ -153,40 +152,30 @@ void remover(Arvore * arv, char * v){
 No * handleShowAndRemoveToMenorBy_rec(No * raiz, char * nome){
   if(raiz != NULL){
 
-    if( strcmp(raiz->info, nome) < 0){
-      printf("%s\n", raiz->info);
+    int chave = strcmp(nome, raiz->info);
+    if( chave == 0 && raiz->esq != NULL ){
       imp_in(raiz->esq);
-
-      int chave = strcmp(nome, raiz->info);
-      if(chave < 1){
-          raiz->esq = handleShowAndRemoveToMenorBy_rec(raiz->esq, nome);
-        }else{
-          raiz->dir = handleShowAndRemoveToMenorBy_rec(raiz->dir, nome);
-      }
       desalocar_nos_rec(raiz->esq);
-      free(raiz);
-      if(raiz->dir != NULL){
-        raiz = raiz->dir;
-      }else{
-        raiz = NULL;
-      }
-    }else{
-      int chave = strcmp(nome, raiz->info);
-      if(chave == 0){
-        imp_in(raiz->esq);
-        desalocar_nos_rec(raiz->esq);
-        raiz->esq = NULL;
-      }
-      else{
-        if(chave < 1){
-          raiz->esq = handleShowAndRemoveToMenorBy_rec(raiz->esq, nome);
-        }else{
-          raiz->dir = handleShowAndRemoveToMenorBy_rec(raiz->dir, nome);
-        }
-      }
-
+      raiz->esq = NULL;
     }
-
+    else{
+      if(chave < 0){
+        raiz->esq = handleShowAndRemoveToMenorBy_rec(raiz->esq, nome);
+        
+      }else{
+      	printf("%s\n", raiz->info);
+        raiz->dir = handleShowAndRemoveToMenorBy_rec(raiz->dir, nome);
+        if(raiz->esq != NULL){
+          imp_in(raiz->esq);
+          desalocar_nos_rec(raiz->esq);
+          raiz->esq = NULL;
+        }
+        No * aux = raiz->dir;
+        free(raiz);
+        raiz = aux;
+      }
+    }
+    
   }
   return raiz;
 }
@@ -202,30 +191,30 @@ void handleShowAndRemoveToMenorBy( Arvore * arv, char * nome ){
 No * handleShowAndRemoveToMaiorBy_rec(No * raiz, char * nome){
   if(raiz != NULL){
     int chave = strcmp(nome, raiz->info);
-    if(chave == 0){
+    if( chave == 0 && raiz->dir != NULL ){
       imp_in(raiz->dir);
       desalocar_nos_rec(raiz->dir);
       raiz->dir = NULL;
     }
     else{
-      if(chave < 1){
+      if(chave < 0){
         raiz->esq = handleShowAndRemoveToMaiorBy_rec(raiz->esq, nome);
+        printf("%s\n", raiz->info);
+        if(raiz->dir != NULL){
+          imp_in(raiz->dir);
+          desalocar_nos_rec(raiz->dir);
+          raiz->dir = NULL;
+        }
+        No * aux = raiz->esq;
+        free(raiz);
+        raiz = aux;
+        
       }else{
         raiz->dir = handleShowAndRemoveToMaiorBy_rec(raiz->dir, nome);
       }
     }
-    if( strcmp(raiz->info, nome) > 0){
-      printf("%s\n", raiz->info);
-      imp_in(raiz->dir);
-      desalocar_nos_rec(raiz->dir);
-      free(raiz);
-      if(raiz->esq != NULL){
-        raiz = raiz->esq;
-      }else{
-        raiz = NULL;
-      }
-    }
   }
+
   return raiz;
 }
 
@@ -236,4 +225,21 @@ void handleShowAndRemoveToMaiorBy( Arvore * arv, char * nome ){
     printf("\n Nenhum nome e maior que %s\n", nome);
   }
 }
+void handleContainsBy(Arvore * arv, char * nome){
+  if( arv->raiz != NULL){
+    printf("\n");
+    handleContainsBy_rec(arv->raiz, nome);
+    printf("\n");
+  }
+}
 
+void handleContainsBy_rec(No * raiz, char * nome){
+  if(raiz != NULL){
+    char * chave = strstr(raiz->info, nome);
+    handleContainsBy_rec(raiz->esq, nome);
+    if(chave != NULL){
+      printf("%s", raiz->info);
+    }
+    handleContainsBy_rec(raiz->dir, nome);
+  }
+}

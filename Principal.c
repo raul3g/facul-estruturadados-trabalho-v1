@@ -38,6 +38,10 @@ void getNome( char * nome ){
 	printf("Digite o nome com no maximo 30 caracteres?\n obs: o nome sera convertido para minusculo.\n=> ");
 	fflush(stdin);
 	gets(nome);
+	while(strlen(nome) > 30){
+		printf("\n -- O nome nao pode ser maior que 30 -- \n Digite novamente:\n");
+		gets(nome);
+	}
 	toLowercase(nome);
 
 }
@@ -87,6 +91,7 @@ int main(int argc, char *argv[]) {
 		menu(option);
 		switch(*option){
 			case 1:{
+				system("cls");
 				startGame(a);
 				break;
 			}
@@ -133,6 +138,7 @@ int main(int argc, char *argv[]) {
 				break;
 			}
 			case 8:{
+				system("cls");
 				printf("\n-- Salvando os nomes no aquivo... --\n");
 				salvarArvore(a);
 				break;

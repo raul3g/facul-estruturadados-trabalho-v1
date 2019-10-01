@@ -163,13 +163,14 @@ No * handleShowAndRemoveToMenorBy_rec(No * raiz, char * nome){
         raiz->esq = handleShowAndRemoveToMenorBy_rec(raiz->esq, nome);
         
       }else{
-      	printf("%s\n", raiz->info);
-        raiz->dir = handleShowAndRemoveToMenorBy_rec(raiz->dir, nome);
+      	
         if(raiz->esq != NULL){
           imp_in(raiz->esq);
           desalocar_nos_rec(raiz->esq);
           raiz->esq = NULL;
         }
+        printf("%s\n", raiz->info);
+        raiz->dir = handleShowAndRemoveToMenorBy_rec(raiz->dir, nome);
         No * aux = raiz->dir;
         free(raiz);
         raiz = aux;
@@ -238,8 +239,32 @@ void handleContainsBy_rec(No * raiz, char * nome){
     char * chave = strstr(raiz->info, nome);
     handleContainsBy_rec(raiz->esq, nome);
     if(chave != NULL){
-      printf("%s", raiz->info);
+      printf("%s\n", raiz->info);
     }
     handleContainsBy_rec(raiz->dir, nome);
   }
 }
+
+void salvarArvore_rec(No * raiz, FILE * file){
+  if(raiz != NULL){
+    fputs(raiz->info, file);
+    fputc('\n', file);
+    salvarArvore_rec(raiz->esq, file);
+    salvarArvore_rec(raiz->dir, file);
+  }
+}
+
+void salvarArvore(Arvore * arv){
+  FILE * file = fopen("arquivo.txt", "w");
+  if( file != NULL){
+    salvarArvore_rec(arv->raiz, file);
+  }
+  fclose(file);
+}
+
+void removerNomes(Arvore *arv){
+  desalocar_nos_rec(arv->raiz);
+  arv->raiz = NULL;
+}
+
+

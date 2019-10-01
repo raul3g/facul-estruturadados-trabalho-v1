@@ -44,3 +44,5 @@
 - `void handleShowAndRemoveToMaiorBy( Arvore * arv, char * nome ):` Imprime o remote todos os nomes maiores que um valor.
 - `void handleShowAndRemoveToMenorBy( Arvore * arv, char * nome ):` Imprime o remote todos os nomes menores que um valor.
 - `void handleContainsBy(Arvore * arv, char * nome):` Imprime todos os nomes que comtém(_substring_) um dado valor.
+- `void salvarArvore(Arvore * arv):` Salva todos os _nomes_ em um arquivo.
+- `void removerNomes(Arvore *arv):` Remove todos os nomes da arvore.
